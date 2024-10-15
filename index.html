@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payroll Growth Dashboard</title>
+
+  <!-- Add some CSS for padding and margin -->
+  <style>
+    /* Add padding to the sides of the visualizations */
+    .chart-container {
+      padding: 20px;
+      margin: 0 auto; /* Center the content */
+      max-width: 1200px; /* Optional: Limit the width */
+    }
+
+    /* Add space between the two charts */
+    .chart-container + .chart-container {
+      margin-top: 40px; /* Space between the charts */
+    }
+  </style>
 </head>
 <body>
 
   <!-- First Visualization (aJ6GE) -->
-  <div style="min-height:734px" id="datawrapper-vis-aJ6GE">
+  <div class="chart-container" style="min-height:734px" id="datawrapper-vis-aJ6GE">
     <script type="text/javascript" defer src="https://datawrapper.dwcdn.net/aJ6GE/embed.js" charset="utf-8" data-target="#datawrapper-vis-aJ6GE"></script>
     <noscript>
       <img src="https://datawrapper.dwcdn.net/aJ6GE/full.png" alt="Payroll Growth Visualization 1" />
@@ -16,7 +31,7 @@
   </div>
 
   <!-- Second Visualization (o04sI) -->
-  <div style="min-height:722px" id="datawrapper-vis-o04sI">
+  <div class="chart-container" style="min-height:722px" id="datawrapper-vis-o04sI">
     <script type="text/javascript" defer src="https://datawrapper.dwcdn.net/o04sI/embed.js" charset="utf-8" data-target="#datawrapper-vis-o04sI"></script>
     <noscript>
       <img src="https://datawrapper.dwcdn.net/o04sI/full.png" alt="Payroll Growth Visualization 2" />
