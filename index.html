@@ -56,6 +56,16 @@
       border: none;
     }
 
+    /* Hide all charts by default */
+    .market-chart {
+      display: none;
+    }
+
+    /* Show the active chart */
+    .market-chart.active {
+      display: block;
+    }
+
     /* Responsiveness for smaller devices */
     @media (max-width: 768px) {
       h1 {
@@ -66,7 +76,6 @@
       }
     }
   </style>
-
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -95,7 +104,7 @@
   <!-- Third Visualization: Market Selection -->
   <div class="chart-container">
     <p>Select Market:</p>
-    <select onchange="switchVis(this.value)">
+    <select id="market-select" onchange="switchVis(this.value)">
       <option value="pvRd4">Atlanta</option>
       <option value="3tBBH">Austin</option>
       <option value="HyKs6">Boston</option>
@@ -129,19 +138,146 @@
       <option value="MU0dW">Washington, D.C.</option>
     </select>
 
-    <iframe title="Market Visualization" aria-label="Interactive chart" id="datawrapper-chart-vq9AT" src="https://datawrapper.dwcdn.net/pvRd4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="576"></iframe>
+    <!-- Embed all market charts -->
+    <div id="charts-container">
+      <!-- Atlanta -->
+      <iframe class="market-chart" id="chart-pvRd4" src="https://datawrapper.dwcdn.net/pvRd4/" scrolling="no" frameborder="0" height="576"></iframe>
 
-    <script type="text/javascript">
-      function switchVis(value) {
-        var iframe = document.getElementById("datawrapper-chart-vq9AT");
-        iframe.src = "https://datawrapper.dwcdn.net/" + value + "/";
-      }
-    </script>
+      <!-- Austin -->
+      <iframe class="market-chart" id="chart-3tBBH" src="https://datawrapper.dwcdn.net/3tBBH/" scrolling="no" frameborder="0" height="576"></iframe>
 
-    <script type="text/javascript">
-      !function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
-    </script>
+      <!-- Boston -->
+      <iframe class="market-chart" id="chart-HyKs6" src="https://datawrapper.dwcdn.net/HyKs6/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Boulder -->
+      <iframe class="market-chart" id="chart-eAXGt" src="https://datawrapper.dwcdn.net/eAXGt/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Charlotte -->
+      <iframe class="market-chart" id="chart-yyQfM" src="https://datawrapper.dwcdn.net/yyQfM/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Dallas-Fort Worth -->
+      <iframe class="market-chart" id="chart-On0QP" src="https://datawrapper.dwcdn.net/On0QP/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Denver -->
+      <iframe class="market-chart" id="chart-EAbgZ" src="https://datawrapper.dwcdn.net/EAbgZ/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Houston -->
+      <iframe class="market-chart" id="chart-JCC6O" src="https://datawrapper.dwcdn.net/JCC6O/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Inland Empire -->
+      <iframe class="market-chart" id="chart-L7gJ1" src="https://datawrapper.dwcdn.net/L7gJ1/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Las Vegas -->
+      <iframe class="market-chart" id="chart-jBMxs" src="https://datawrapper.dwcdn.net/jBMxs/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Long Island -->
+      <iframe class="market-chart" id="chart-y3Eul" src="https://datawrapper.dwcdn.net/y3Eul/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Los Angeles -->
+      <iframe class="market-chart" id="chart-aKnhu" src="https://datawrapper.dwcdn.net/aKnhu/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Miami-Metro -->
+      <iframe class="market-chart" id="chart-WC3mz" src="https://datawrapper.dwcdn.net/WC3mz/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- N New Jersey -->
+      <iframe class="market-chart" id="chart-JkzV7" src="https://datawrapper.dwcdn.net/JkzV7/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Nashville -->
+      <iframe class="market-chart" id="chart-raRlz" src="https://datawrapper.dwcdn.net/raRlz/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- New York -->
+      <iframe class="market-chart" id="chart-nN5tf" src="https://datawrapper.dwcdn.net/nN5tf/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Orange County -->
+      <iframe class="market-chart" id="chart-rjl27" src="https://datawrapper.dwcdn.net/rjl27/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Orlando -->
+      <iframe class="market-chart" id="chart-awurP" src="https://datawrapper.dwcdn.net/awurP/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Philadelphia -->
+      <iframe class="market-chart" id="chart-cL4BS" src="https://datawrapper.dwcdn.net/cL4BS/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Phoenix -->
+      <iframe class="market-chart" id="chart-wFJPL" src="https://datawrapper.dwcdn.net/wFJPL/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Raleigh-Durham -->
+      <iframe class="market-chart" id="chart-ZZAbn" src="https://datawrapper.dwcdn.net/ZZAbn/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Sacramento -->
+      <iframe class="market-chart" id="chart-NqBsg" src="https://datawrapper.dwcdn.net/NqBsg/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- San Diego -->
+      <iframe class="market-chart" id="chart-jyD1q" src="https://datawrapper.dwcdn.net/jyD1q/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- San Francisco-Oakland -->
+      <iframe class="market-chart" id="chart-ZNYeT" src="https://datawrapper.dwcdn.net/ZNYeT/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- San Jose -->
+      <iframe class="market-chart" id="chart-hgFDq" src="https://datawrapper.dwcdn.net/hgFDq/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Seattle -->
+      <iframe class="market-chart" id="chart-O0BEf" src="https://datawrapper.dwcdn.net/O0BEf/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Stamford -->
+      <iframe class="market-chart" id="chart-2A6pg" src="https://datawrapper.dwcdn.net/2A6pg/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Tampa -->
+      <iframe class="market-chart" id="chart-kEiMe" src="https://datawrapper.dwcdn.net/kEiMe/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Trenton-Princeton -->
+      <iframe class="market-chart" id="chart-C09TB" src="https://datawrapper.dwcdn.net/C09TB/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Ventura -->
+      <iframe class="market-chart" id="chart-UvgPP" src="https://datawrapper.dwcdn.net/UvgPP/" scrolling="no" frameborder="0" height="576"></iframe>
+
+      <!-- Washington, D.C. -->
+      <iframe class="market-chart" id="chart-MU0dW" src="https://datawrapper.dwcdn.net/MU0dW/" scrolling="no" frameborder="0" height="576"></iframe>
+    </div>
   </div>
+
+  <!-- JavaScript to switch charts -->
+  <script type="text/javascript">
+    // Function to switch visible chart
+    function switchVis(chartId) {
+      // Get all chart iframes
+      var charts = document.getElementsByClassName('market-chart');
+      // Hide all charts
+      for (var i = 0; i < charts.length; i++) {
+        charts[i].classList.remove('active');
+      }
+      // Show the selected chart
+      var selectedChart = document.getElementById('chart-' + chartId);
+      if (selectedChart) {
+        selectedChart.classList.add('active');
+      }
+    }
+
+    // Initialize by showing the first chart in the dropdown
+    window.onload = function() {
+      var initialChartId = document.getElementById('market-select').value;
+      switchVis(initialChartId);
+    };
+  </script>
+
+  <!-- Datawrapper Responsive Iframe Script -->
+  <script type="text/javascript">
+    !function() {
+      "use strict";
+      window.addEventListener("message", function(a) {
+        if (void 0 !== a.data["datawrapper-height"]) {
+          var e = document.querySelectorAll("iframe");
+          for (var t in a.data["datawrapper-height"]) {
+            for (var r = 0; r < e.length; r++) {
+              if (e[r].contentWindow === a.source) {
+                var i = a.data["datawrapper-height"][t] + "px";
+                e[r].style.height = i;
+              }
+            }
+          }
+        }
+      });
+    }();
+  </script>
 
 </body>
 </html>
