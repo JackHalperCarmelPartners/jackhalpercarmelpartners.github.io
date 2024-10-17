@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CP Jobs Report</title>
-
   <style>
     /* Use a clean font */
     body {
@@ -47,6 +45,11 @@
       border-radius: 10px; /* Rounded corners */
     }
 
+    /* Add space between the charts */
+    .chart-container + .chart-container {
+      margin-top: 40px;
+    }
+
     /* Ensure iframes take full width */
     iframe {
       width: 100%;
@@ -65,7 +68,7 @@
   </style>
 
   <!-- Load Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;100&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -75,10 +78,24 @@
     <h1>Jobs Report - August 2024</h1>
   </div>
 
-  <!-- Dropdown Menu for Market Selection -->
-  <div class="chart-container" style="text-align: center;">
-    <label for="market-select">Select Market:</label>
-    <select id="market-select" onchange="switchMarket()">
+  <!-- First Visualization: Current Payroll Growth -->
+  <div class="chart-container">
+    <iframe title="Current Payroll Growth" aria-label="Bar Chart" id="datawrapper-chart-aJ6GE"
+            src="https://datawrapper.dwcdn.net/aJ6GE/1/" scrolling="no"
+            height="734" data-external="1"></iframe>
+  </div>
+
+  <!-- Second Visualization: Payroll Growth T12M Average YoY vs Current -->
+  <div class="chart-container">
+    <iframe title="Payroll Growth T12M Average YoY vs Current" aria-label="Arrow Plot" id="datawrapper-chart-o04sI"
+            src="https://datawrapper.dwcdn.net/o04sI/3/" scrolling="no"
+            height="585" data-external="1"></iframe>
+  </div>
+
+  <!-- Third Visualization: Market Selection -->
+  <div class="chart-container">
+    <p>Select Market:</p>
+    <select onchange="switchVis(this.value)">
       <option value="pvRd4">Atlanta</option>
       <option value="3tBBH">Austin</option>
       <option value="HyKs6">Boston</option>
@@ -111,36 +128,20 @@
       <option value="UvgPP">Ventura</option>
       <option value="MU0dW">Washington, D.C.</option>
     </select>
-  </div>
 
-  <!-- Container for the selected chart -->
-  <div class="chart-container">
-    <iframe title="Market Visualization" aria-label="Interactive chart" id="market-iframe"
-            src="https://datawrapper.dwcdn.net/pvRd4/" scrolling="no"
-            height="576" data-external="1"></iframe>
-  </div>
+    <iframe title="Market Visualization" aria-label="Interactive chart" id="datawrapper-chart-vq9AT" src="https://datawrapper.dwcdn.net/pvRd4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="576"></iframe>
 
-  <!-- JavaScript to switch the iframe based on market selection -->
-  <script>
-    function switchMarket() {
-      var marketSelect = document.getElementById("market-select");
-      var selectedMarket = marketSelect.value;
-      var iframe = document.getElementById("market-iframe");
-
-      // Update the iframe source to the selected market's chart
-      iframe.src = "https://datawrapper.dwcdn.net/" + selectedMarket + "/";
-    }
-
-    // Adjust iframe height on message event from Datawrapper
-    window.addEventListener("message", function(a) {
-      if (void 0 !== a.data["datawrapper-height"]) {
-        var iframe = document.getElementById("market-iframe");
-        if (a.data["datawrapper-height"]) {
-          iframe.style.height = a.data["datawrapper-height"][selectedMarket] + "px";
-        }
+    <script type="text/javascript">
+      function switchVis(value) {
+        var iframe = document.getElementById("datawrapper-chart-vq9AT");
+        iframe.src = "https://datawrapper.dwcdn.net/" + value + "/";
       }
-    });
-  </script>
+    </script>
+
+    <script type="text/javascript">
+      !function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
+    </script>
+  </div>
 
 </body>
 </html>
