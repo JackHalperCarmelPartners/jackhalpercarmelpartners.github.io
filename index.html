@@ -47,11 +47,6 @@
       border-radius: 10px; /* Rounded corners */
     }
 
-    /* Add space between the charts */
-    .chart-container + .chart-container {
-      margin-top: 40px;
-    }
-
     /* Ensure iframes take full width */
     iframe {
       width: 100%;
@@ -80,42 +75,71 @@
     <h1>Jobs Report - August 2024</h1>
   </div>
 
-  <!-- First Visualization: Current Payroll Growth -->
-  <div class="chart-container">
-    <iframe title="Current Payroll Growth" aria-label="Bar Chart" id="datawrapper-chart-aJ6GE"
-            src="https://datawrapper.dwcdn.net/aJ6GE/1/" scrolling="no"
-            height="734" data-external="1"></iframe>
+  <!-- Dropdown Menu for Market Selection -->
+  <div class="chart-container" style="text-align: center;">
+    <label for="market-select">Select Market:</label>
+    <select id="market-select" onchange="switchMarket()">
+      <option value="pvRd4">Atlanta</option>
+      <option value="3tBBH">Austin</option>
+      <option value="HyKs6">Boston</option>
+      <option value="eAXGt">Boulder</option>
+      <option value="yyQfM">Charlotte</option>
+      <option value="On0QP">Dallas-Fort Worth</option>
+      <option value="EAbgZ">Denver</option>
+      <option value="JCC6O">Houston</option>
+      <option value="L7gJ1">Inland Empire</option>
+      <option value="jBMxs">Las Vegas</option>
+      <option value="y3Eul">Long Island</option>
+      <option value="aKnhu">Los Angeles</option>
+      <option value="WC3mz">Miami-Metro</option>
+      <option value="JkzV7">N New Jersey</option>
+      <option value="raRlz">Nashville</option>
+      <option value="nN5tf">New York</option>
+      <option value="rjl27">Orange County</option>
+      <option value="awurP">Orlando</option>
+      <option value="cL4BS">Philadelphia</option>
+      <option value="wFJPL">Phoenix</option>
+      <option value="ZZAbn">Raleigh-Durham</option>
+      <option value="NqBsg">Sacramento</option>
+      <option value="jyD1q">San Diego</option>
+      <option value="ZNYeT">San Francisco-Oakland</option>
+      <option value="hgFDq">San Jose</option>
+      <option value="O0BEf">Seattle</option>
+      <option value="2A6pg">Stamford</option>
+      <option value="kEiMe">Tampa</option>
+      <option value="C09TB">Trenton-Princeton</option>
+      <option value="UvgPP">Ventura</option>
+      <option value="MU0dW">Washington, D.C.</option>
+    </select>
   </div>
 
-  <!-- Second Visualization: Payroll Growth T12M Average YoY vs Current -->
+  <!-- Container for the selected chart -->
   <div class="chart-container">
-    <iframe title="Payroll Growth T12M Average YoY vs Current" aria-label="Arrow Plot" id="datawrapper-chart-o04sI"
-            src="https://datawrapper.dwcdn.net/o04sI/3/" scrolling="no"
-            height="585" data-external="1"></iframe>
-  </div>
-
-  <!-- Third Visualization: Austin YoY Sectoral Job Growth -->
-  <div class="chart-container">
-    <iframe title="Austin YoY Sectoral Job Growth" aria-label="Stacked Columns" id="datawrapper-chart-7Iugm"
-            src="https://datawrapper.dwcdn.net/7Iugm/1/" scrolling="no"
+    <iframe title="Market Visualization" aria-label="Interactive chart" id="market-iframe"
+            src="https://datawrapper.dwcdn.net/pvRd4/" scrolling="no"
             height="576" data-external="1"></iframe>
   </div>
-  
-  <script type="text/javascript">
-    !function() {
-      "use strict";
-      window.addEventListener("message", function(a) {
-        if (void 0 !== a.data["datawrapper-height"]) {
-          var e = document.querySelectorAll("iframe");
-          for (var t in a.data["datawrapper-height"])
-            for (var r = 0; r < e.length; r++)
-              if (e[r].contentWindow === a.source) {
-                var i = a.data["datawrapper-height"][t] + "px";
-                e[r].style.height = i;
-              }
+
+  <!-- JavaScript to switch the iframe based on market selection -->
+  <script>
+    function switchMarket() {
+      var marketSelect = document.getElementById("market-select");
+      var selectedMarket = marketSelect.value;
+      var iframe = document.getElementById("market-iframe");
+
+      // Update the iframe source to the selected market's chart
+      iframe.src = "https://datawrapper.dwcdn.net/" + selectedMarket + "/";
+    }
+
+    // Adjust iframe height on message event from Datawrapper
+    window.addEventListener("message", function(a) {
+      if (void 0 !== a.data["datawrapper-height"]) {
+        var iframe = document.getElementById("market-iframe");
+        if (a.data["datawrapper-height"]) {
+          iframe.style.height = a.data["datawrapper-height"][selectedMarket] + "px";
         }
-      });
-    }();
+      }
+    });
   </script>
 
 </body>
