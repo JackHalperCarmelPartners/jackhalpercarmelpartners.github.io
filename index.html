@@ -6,43 +6,79 @@
   <title>CP Jobs Report</title>
 
   <style>
+    /* Use a clean font */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f4; /* Light background color */
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the title */
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5em;
+      color: #0074A8; /* Use Carmel blue */
+    }
+
     /* Add padding to the sides of the visualizations */
     .chart-container {
       padding: 20px;
       margin: 0 auto;
-      max-width: 900px; /* Limit the width to 900px */
+      max-width: 900px;
+      background-color: white; /* White background for charts */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+      border-radius: 10px; /* Rounded corners */
     }
 
     /* Add space between the charts */
     .chart-container + .chart-container {
-      margin-top: 40px; /* Space between charts */
+      margin-top: 40px;
+    }
+
+    /* Ensure iframes take full width */
+    iframe {
+      width: 100%;
+      border: none;
+    }
+
+    /* Responsiveness for smaller devices */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
     }
   </style>
+
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Title of the Dashboard -->
+  <h1>CP Jobs Report</h1>
 
   <!-- First Visualization: Current Payroll Growth -->
   <div class="chart-container">
     <iframe title="Current Payroll Growth" aria-label="Bar Chart" id="datawrapper-chart-aJ6GE"
             src="https://datawrapper.dwcdn.net/aJ6GE/1/" scrolling="no"
-            frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="734" data-external="1">
-    </iframe>
+            height="734" data-external="1"></iframe>
   </div>
 
   <!-- Second Visualization: Payroll Growth T12M Average YoY vs Current -->
   <div class="chart-container">
     <iframe title="Payroll Growth T12M Average YoY vs Current" aria-label="Arrow Plot" id="datawrapper-chart-o04sI"
             src="https://datawrapper.dwcdn.net/o04sI/3/" scrolling="no"
-            frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="585" data-external="1">
-    </iframe>
+            height="585" data-external="1"></iframe>
   </div>
 
   <!-- Third Visualization: Austin YoY Sectoral Job Growth -->
   <div class="chart-container">
     <iframe title="Austin YoY Sectoral Job Growth" aria-label="Stacked Columns" id="datawrapper-chart-7Iugm"
             src="https://datawrapper.dwcdn.net/7Iugm/1/" scrolling="no"
-            frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="576" data-external="1">
-    </iframe>
+            height="576" data-external="1"></iframe>
   </div>
   
   <script type="text/javascript">
